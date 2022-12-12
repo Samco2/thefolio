@@ -1,14 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
+    {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Album example · Bootstrap v5.2</title>
+    <title>Gem Crystal</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
+    
 
     
 
@@ -22,16 +23,15 @@
   </header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">GEM CRYSTAL</a>
+      <a class="navbar-brand" href="{% url 'home' %}">GEM CRYSTAL</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="ml-auto navbar-nav">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-          <a class="nav-link" href="#">Twitter</a>
-          <a class="nav-link" href="#">Gem Profile</a>
-          <a class="nav-link nav-link active">Blog</a>
+        <div class="navbar-nav ml-auto">
+          <a class="nav-link" href="http://twitter.com">Twitter</a>
+          <a class="nav-link" href="{% static 'resuming.pdf' %}">Gem Profile</a>
+          <a class="nav-link nav-item active" href="{% url 'allblogs' %}">Blog</a>
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
 
 {% for blog in blogs.all %}
 
-<a href=""><h3>{{blog.title}}</h3></a>
+<a href="{% url 'detail' blog.id %}"><h3>{{blog.title}}</h3></a>
 {{blog.pub_date_pretty}}
 <br/>
 <img class = "img-fluid" src={{ blog.image.url }} height = 200 width =200 />
